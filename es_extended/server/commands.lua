@@ -10,6 +10,14 @@ end, function(source, args, user)
   TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
 end)
 
+-------/addthirst
+TriggerEvent('es:addGroupCommand', 'addthirst', 'admin', function(source, args, user)
+  TriggerClientEvent('esx_status:set', source, 'thirst', 1000000)
+end, function(source, args, user)
+  TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
+end, {help = _U('delete_vehicle'), params = {{name = "status", help = _U('delete_veh_param')}}})
+-------/addthirst
+
 TriggerEvent('es:addGroupCommand', 'setjob', 'mod', function(source, args, user)
   local xPlayer = ESX.GetPlayerFromId(args[2])
   xPlayer.setJob(args[3], tonumber(args[4]))
