@@ -31,26 +31,11 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
     ESX.UI.HUD.RegisterElement('account_' .. xPlayer.accounts[i].name, i-1, 0, accountTpl, {
       money = 0
     })
-
     ESX.UI.HUD.UpdateElement('account_' .. xPlayer.accounts[i].name, {
       money = xPlayer.accounts[i].money
     })
-	
   end
-  
-  for e=3, #xPlayer.accounts, 3 do
-
-    local accountTpl = '<div><img src="img/accounts/' .. xPlayer.accounts[e].name .. '.png"/>&nbsp;{{experience}}</div>'
-	
-    ESX.UI.HUD.RegisterElement('account_' .. xPlayer.accounts[e].name, e-1, 0, accountTpl, {
-      experience = 0
-    })
-
-    ESX.UI.HUD.UpdateElement('account_' .. xPlayer.accounts[e].name, {
-      experience = xPlayer.accounts[e].experience
-    })
-  end  
-  
+   
   local jobTpl = '<div>{{job_label}} - {{grade_label}}</div>'
 
   if xPlayer.job.grade_label == '' then
@@ -118,6 +103,26 @@ AddEventHandler('esx:restoreLoadout', function ()
 
   LoadoutLoaded = true
 end)
+
+RegisterNetEvent('esx:setAccountExperience')
+AddEventHandler('esx:setAccountExperience', function(account)
+
+  for i=1, #ESX.PlayerData.accounts, 1 do
+    if ESX.PlayerData.accounts[i].name == account.name then
+      ESX.PlayerData.accounts[i] = account
+    end
+  end
+
+  ESX.UI.HUD.UpdateElement('account_' .. account.name, {
+    experience = account.experience
+  })
+end)
+
+RegisterNetEvent('es:activateExperience')
+AddEventHandler('es:activateExperience', function(experience)
+  ESX.PlayerData.experience = experience
+end)
+
 
 RegisterNetEvent('esx:setAccountMoney')
 AddEventHandler('esx:setAccountMoney', function(account)
