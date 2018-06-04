@@ -11,5 +11,5 @@
 
 # Update es_extended client/main.lua 
 # working !! 
-# In the last update the player interface works correctly, currently the system is not working properly, because the saved experience is not being done in the database but in the client, I do not know how it is ... WTF
-# https://i.gyazo.com/8e4d97b5a59c578fb80047b4ba8d57f2.png
+# running on my server, the repository is outdated, if someone wants this project working contact me privately at FiveM Forum
+# https://i.gyazo.com/e44432bbafb4762aa2b8cc55da65bf7c.mp4
